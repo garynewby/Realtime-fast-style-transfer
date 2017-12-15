@@ -26,11 +26,11 @@ function togglePause() {
 async function initialize(style, name) {
     loaded = false;
     try {
-        setStatus('LOADING');
+        currentStyle = name;
+        setStatus('LOADING ' + currentStyle + '...');
         dnn = await WebDNN.load(style, {backendOrder:['webgl']});
         console.log(`backend: ${dnn.backendName}`);
         loaded = true;
-        currentStyle = name;
         
         Webcam.set({
             dest_width: 192,
