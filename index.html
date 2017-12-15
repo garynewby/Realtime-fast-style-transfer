@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IAG - Neural Style Transfer WebGL</title>
+    <meta charset="utf-8">
+    <script src="js/inflate.min.js"></script>
+    <script src="js/webdnn.js"></script>
+    <script src="js/webcam.min.js"></script>
+    <script src="js/script.js"></script>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            margin: 0px;
+            background: #444;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: normal;
+        }
+        
+        .Layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .OutputLayer {
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .CameraLayer {
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .UILayer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            background: #444;
+            color: #fff;
+        }
+        
+        .OutputLayer canvas,
+        .CameraLayer object {
+            position: absolute;
+            top: 0%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .logo {
+            z-index: 100;
+            position: fixed;
+            bottom: 0;
+            width: 210px;
+            font-size: 60px;
+            font-weight: bold;
+            color: #fff;
+            padding: 25px;
+            text-align: left;
+        }
+        
+        .menu {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            width: 210px;
+            height: 100%;
+            padding: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        #status {
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        #snap {
+            border: 0px solid #000;
+            display: none;
+            margin-top: 32px;
+        }
+        
+        hr {
+            border: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.15);
+            height: 1px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="Layer OutputLayer" onclick="togglePause(); return false;">
+        <canvas id="result" width="192" height="144"></canvas>
+    </div>
+
+    <div class="Layer CameraLayer"></div>
+
+
+
+    <canvas id="snap" width="192" height="144"></canvas>
+
+    <div class="menu">
+        <p style="font-size: 22px; font-weight: normal; color: #fff;">REALTIME STYLE TRANSFER</p>
+        <p style="margin-top:50px;font-size: 18px;">STYLES</p>
+        
+        <a href="javascript:initialize('./output-candy', 'CANDY');">CANDY</a>
+        <hr>
+        <a href="javascript:initialize('./output-composition', 'COMP');">COMP</a>
+        <hr>
+        <a href="javascript:initialize('./output-cubist', 'CUBIST');">CUBIST</a>
+        <hr>
+        <a href="javascript:initialize('./output-edtaonisl', 'EDTAONISL');">EDTAONISL</a>
+        <hr>
+        <a href="javascript:initialize('./output-fur_0', 'FUR');">FUR</a>
+        <hr>
+        <a href="javascript:initialize('./output-hokusai', 'HOKUSAI');">HOKUSAI</a>
+        <hr>
+        <a href="javascript:initialize('./output-hundertwasser', 'HUNDERTWASSER');">HUNDERTWASSER</a>
+        <hr>
+        <a href="javascript:initialize('./output-kanagawa', 'WAVE');">WAVE</a>
+        <hr>
+        <a href="javascript:initialize('./output-kandinsky_e2_full512', 'KANDINSKY');">KANDINSKY</a>
+        <hr>
+        <a href="javascript:initialize('./output-seurat', 'SEURAT');">SEURAT</a>
+        <hr>
+        <a href="javascript:initialize('./output-starrynight', 'STARRYNIGHT');">STARRYNIGHT</a>
+        <hr>
+        
+        <p style="margin-top:60px;font-size: 18px;">STATUS</p>
+        <div id="status" onclick="togglePause(); return false;">
+            SELECT A STYLE
+        </div>
+    </div>
+
+</body>
+
+</html>
