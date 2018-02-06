@@ -11,5 +11,5 @@ https://mil-tokyo.github.io/webdnn
 Models converted from:  
 git clone https://github.com/gafr/chainer-fast-neuralstyle-models
 
-Try it in Chrome here:  
-https://garynewby.github.io/Realtime-Neural-Style-Transfer/
+Try it in Chrome here:
+https://garynewby.github.io/Realtime-Neural-Network-Style-Transfer
