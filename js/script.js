@@ -12,7 +12,7 @@ let currentStyle = "false";
 
 function togglePause() {
     if (!loaded) return;
-    
+
     flagPaused = !flagPaused;
 
     if (flagPaused) {
@@ -28,10 +28,10 @@ async function initialize(style, name) {
     try {
         currentStyle = name;
         setStatus('LOADING ' + currentStyle + '...');
-        dnn = await WebDNN.load(style, {backendOrder:['webgl']});
+        dnn = await WebDNN.load(style, { backendOrder: ['webgl'] });
         console.log(`backend: ${dnn.backendName}`);
         loaded = true;
-        
+
         Webcam.set({
             dest_width: 192,
             dest_height: 144,
@@ -54,7 +54,7 @@ async function initialize(style, name) {
         ctxOut = $output.getContext('2d');
         h = $output.height;
         w = $output.width;
-        
+
     } catch (err) {
         console.log(err);
         setStatus(`Error: ${err.message}`);
